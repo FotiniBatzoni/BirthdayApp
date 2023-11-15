@@ -1,5 +1,6 @@
 ﻿using BirthdayApp.Classes;
 using BirthdayApp.Repository.Interface;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using SharpCompress.Common;
 using System;
@@ -26,7 +27,8 @@ namespace BirthdayApp.Interfaces
 
         public Person GetById(string id)
         {
-            return _dbContext.GetCollection<Person>("Persons").Find(c => c.Id == id).FirstOrDefault();
+            var objectId = ObjectId.Parse(id);
+            return _dbContext.GetCollection<Person>("Persons").Find(c => c.Id == objectId).FirstOrDefault();
         }
 
         public void Add(Person entity)
@@ -48,7 +50,8 @@ namespace BirthdayApp.Interfaces
 
         public void Delete(string id)
         {
-            var filter = Builders<Person>.Filter.Eq(c => c.Id, id);
+            var objectId = ObjectId.Parse(id);
+            var filter = Builders<Person>.Filter.Eq(c => c.Id, objectId);
             _dbContext.GetCollection<Person>("Persons").DeleteOne(filter);
         }
     }

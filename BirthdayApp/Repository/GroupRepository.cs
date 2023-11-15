@@ -1,5 +1,6 @@
 ﻿using BirthdayApp.Classes;
 using BirthdayApp.Repository.Interface;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace BirthdayApp.Repository
@@ -21,7 +22,8 @@ namespace BirthdayApp.Repository
 
         public Group GetById(string id)
         {
-            return _dbContext.GetCollection<Group>("Groups").Find(c => c.Id == id).FirstOrDefault();
+            var objectId = ObjectId.Parse(id);
+            return _dbContext.GetCollection<Group>("Groups").Find(c => c.Id == objectId).FirstOrDefault();
         }
 
         public void Add(Group entity)
@@ -40,7 +42,8 @@ namespace BirthdayApp.Repository
 
         public void Delete(string id)
         {
-            var filter = Builders<Group>.Filter.Eq(c => c.Id, id);
+            var objectId = ObjectId.Parse(id);
+            var filter = Builders<Group>.Filter.Eq(c => c.Id, objectId);
             _dbContext.GetCollection<Group>("Groups").DeleteOne(filter);
         }
 

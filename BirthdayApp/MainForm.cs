@@ -1,9 +1,6 @@
 using BirthdayApp.Classes;
 using BirthdayApp.Interfaces;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Xml.Linq;
+
 
 namespace BirthdayApp
 {
@@ -28,6 +25,16 @@ namespace BirthdayApp
         private void btnList_Click(object sender, EventArgs e)
         {
             var persons = _personRepository.GetAll();
+
+            // Create an instance of the DataGridViewList form
+            DataGridViewList dataGridViewListForm = new DataGridViewList();
+
+            // Populate the DataGridView in the form with the retrieved persons
+            dataGridViewListForm.PopulateDataGridView(persons);
+
+            // Show the form
+            dataGridViewListForm.Show();
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -48,17 +55,16 @@ namespace BirthdayApp
 
             try
             {
-                // Use the PersonRepository to add the person to MongoDB
                 _personRepository.Add(newPerson);
-                MessageBox.Show("Person added successfully!");
+                MessageBox.Show("Επιτυχής καταχώρηση!");
 
                 // Optionally, update UI or clear input fields after successful addition
                 ClearInputFields();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error adding person: {ex.Message}");
-                // Handle the exception appropriately (log, show error message, etc.)
+                MessageBox.Show($"Λάθος στην καταχώρηση: {ex.Message}");
+
             }
         }
 
@@ -88,7 +94,7 @@ namespace BirthdayApp
             if (cmbBoxSex.SelectedItem is ComboBoxSex selected)
             {
                 int selectedValue = selected.Value;
-                
+
             }
         }
     }

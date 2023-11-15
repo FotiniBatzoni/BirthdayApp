@@ -106,7 +106,7 @@
             Group.FormattingEnabled = true;
             Group.Location = new Point(131, 237);
             Group.Name = "Group";
-            Group.Size = new Size(299, 94);
+            Group.Size = new Size(299, 166);
             Group.TabIndex = 7;
             // 
             // btnAdd

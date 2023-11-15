@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BirthdayApp.Classes
 {
     public class Group
     {
-        public string Id { get; set; }
+        public ObjectId Id { get; set; }
         public string Name { get; set; }
     }
 }

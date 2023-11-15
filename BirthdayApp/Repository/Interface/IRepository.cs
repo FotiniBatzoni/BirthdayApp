@@ -1,4 +1,6 @@
 ﻿
+using MongoDB.Bson;
+
 namespace BirthdayApp.Repository.Interface
 {
     public interface IRepository<T>
