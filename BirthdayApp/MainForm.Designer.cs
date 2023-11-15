@@ -33,7 +33,7 @@
             lblLastName = new Label();
             txtBoxLastName = new TextBox();
             lblBirthday = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            bday = new DateTimePicker();
             lblGroup = new Label();
             Group = new CheckedListBox();
             btnAdd = new Button();
@@ -85,12 +85,12 @@
             lblBirthday.TabIndex = 4;
             lblBirthday.Text = "Γενέθλια";
             // 
-            // dateTimePicker1
+            // bday
             // 
-            dateTimePicker1.Location = new Point(131, 134);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(299, 23);
-            dateTimePicker1.TabIndex = 5;
+            bday.Location = new Point(131, 134);
+            bday.Name = "bday";
+            bday.Size = new Size(299, 23);
+            bday.TabIndex = 5;
             // 
             // lblGroup
             // 
@@ -117,6 +117,7 @@
             btnAdd.TabIndex = 8;
             btnAdd.Text = "Πρόσθεσε Γενέθλια";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnList
             // 
@@ -126,6 +127,7 @@
             btnList.TabIndex = 9;
             btnList.Text = "Λίστα";
             btnList.UseVisualStyleBackColor = true;
+            btnList.Click += btnList_Click;
             // 
             // btnListByMonth
             // 
@@ -152,6 +154,7 @@
             cmbBoxSex.Name = "cmbBoxSex";
             cmbBoxSex.Size = new Size(121, 23);
             cmbBoxSex.TabIndex = 12;
+            cmbBoxSex.SelectedIndexChanged += cmbBoxSex_SelectedIndexChanged;
             // 
             // btnGroup
             // 
@@ -175,7 +178,7 @@
             Controls.Add(btnAdd);
             Controls.Add(Group);
             Controls.Add(lblGroup);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(bday);
             Controls.Add(lblBirthday);
             Controls.Add(txtBoxLastName);
             Controls.Add(lblLastName);
@@ -194,7 +197,7 @@
         private Label lblLastName;
         private TextBox txtBoxLastName;
         private Label lblBirthday;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker bday;
         private Label lblGroup;
         private CheckedListBox Group;
         private Button btnAdd;
