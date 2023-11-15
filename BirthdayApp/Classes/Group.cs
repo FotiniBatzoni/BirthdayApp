@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BirthdayApp.Classes
 {
-    public class Circle
+    public class Group
     {
         private string Id { get; set; }
         private string Name { get; set; }
