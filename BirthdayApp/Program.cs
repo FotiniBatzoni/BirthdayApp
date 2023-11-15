@@ -1,3 +1,6 @@
+using BirthdayApp.Classes;
+using BirthdayApp.Interfaces;
+
 namespace BirthdayApp
 {
     internal static class Program
@@ -8,10 +11,15 @@ namespace BirthdayApp
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Create instances of MongoDBContext and PersonRepository
+            var mongoDBContext = new MongoDBContext("mongodb://localhost:27017", "BirthdayApp");
+            var personRepository = new PersonRepository(mongoDBContext);
+
+            // Pass these instances to the MainForm constructor
+            Application.Run(new MainForm(mongoDBContext, personRepository));
         }
     }
 }

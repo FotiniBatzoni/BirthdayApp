@@ -41,6 +41,7 @@
             btnListByMonth = new Button();
             lblSex = new Label();
             cmbBoxSex = new ComboBox();
+            btnGroup = new Button();
             SuspendLayout();
             // 
             // lblFirstName
@@ -110,16 +111,16 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(552, 237);
+            btnAdd.Location = new Point(537, 50);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(140, 44);
             btnAdd.TabIndex = 8;
-            btnAdd.Text = "Πρόσθεσε";
+            btnAdd.Text = "Πρόσθεσε Γενέθλια";
             btnAdd.UseVisualStyleBackColor = true;
             // 
             // btnList
             // 
-            btnList.Location = new Point(552, 50);
+            btnList.Location = new Point(537, 161);
             btnList.Name = "btnList";
             btnList.Size = new Size(140, 44);
             btnList.TabIndex = 9;
@@ -128,7 +129,7 @@
             // 
             // btnListByMonth
             // 
-            btnListByMonth.Location = new Point(552, 140);
+            btnListByMonth.Location = new Point(786, 161);
             btnListByMonth.Name = "btnListByMonth";
             btnListByMonth.Size = new Size(140, 44);
             btnListByMonth.TabIndex = 10;
@@ -152,11 +153,21 @@
             cmbBoxSex.Size = new Size(121, 23);
             cmbBoxSex.TabIndex = 12;
             // 
+            // btnGroup
+            // 
+            btnGroup.Location = new Point(786, 50);
+            btnGroup.Name = "btnGroup";
+            btnGroup.Size = new Size(140, 44);
+            btnGroup.TabIndex = 13;
+            btnGroup.Text = "Πρόσθεσε Γκρουπ";
+            btnGroup.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(981, 450);
+            Controls.Add(btnGroup);
             Controls.Add(cmbBoxSex);
             Controls.Add(lblSex);
             Controls.Add(btnListByMonth);
@@ -191,5 +202,6 @@
         private Button btnListByMonth;
         private Label lblSex;
         private ComboBox cmbBoxSex;
+        private Button btnGroup;
     }
 }

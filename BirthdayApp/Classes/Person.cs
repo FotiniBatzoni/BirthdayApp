@@ -8,9 +8,10 @@ namespace BirthdayApp.Classes
 {
     public class Person
     {
-        private string Id { get; set; }
-        private string FirstName { get; set; }
-        private string LastName { get; set; }
-        private DateOnly Birthday { get; set; }
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateOnly Birthday { get; set; }
+        public string Sex { get; set; }
     }
 }

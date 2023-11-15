@@ -8,7 +8,7 @@ namespace BirthdayApp.Classes
 {
     public class Group
     {
-        private string Id { get; set; }
-        private string Name { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }
