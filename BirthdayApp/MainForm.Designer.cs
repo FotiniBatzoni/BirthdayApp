@@ -1,4 +1,6 @@
-﻿namespace BirthdayApp
+﻿using System.Xml.Linq;
+
+namespace BirthdayApp
 {
     partial class MainForm
     {
@@ -59,6 +61,8 @@
             txtBoxFirstName.Name = "txtBoxFirstName";
             txtBoxFirstName.Size = new Size(299, 23);
             txtBoxFirstName.TabIndex = 1;
+            txtBoxFirstName.Validating += txtBoxFirstName_Validating;
+
             // 
             // lblLastName
             // 

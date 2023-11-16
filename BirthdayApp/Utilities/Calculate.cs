@@ -8,7 +8,7 @@ namespace BirthdayApp.Utilities
     {
         static DateTime currentDate = DateTime.Now;
 
-        static DateTime ParseGreekDate(string dateString)
+        public static DateTime ParseGreekDate(string dateString)
         {
             CultureInfo greekCulture = new CultureInfo("el-GR");
             string dateFormat = "dddd, dd MMMM yyyy";

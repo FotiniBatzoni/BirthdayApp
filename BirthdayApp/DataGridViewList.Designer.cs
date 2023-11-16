@@ -34,13 +34,14 @@
             // 
             // ListDataGridView
             // 
+            ListDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             ListDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ListDataGridView.Location = new Point(2, 2);
             ListDataGridView.Name = "ListDataGridView";
             ListDataGridView.RowTemplate.Height = 25;
-            ListDataGridView.Size = new Size(800, 404);
+            ListDataGridView.Size = new Size(770, 404);
             ListDataGridView.TabIndex = 0;
-            ListDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; // Set auto-size mode
+            ListDataGridView.ColumnHeaderMouseClick += ListDataGridView_ColumnHeaderMouseClick;
             // 
             // DataGridViewList
             // 

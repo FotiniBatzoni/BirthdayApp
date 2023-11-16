@@ -1,6 +1,9 @@
 using BirthdayApp.Classes;
 using BirthdayApp.Interfaces;
-
+using BirthdayApp.Utilities;
+using System.Linq.Expressions;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace BirthdayApp
 {
@@ -9,6 +12,8 @@ namespace BirthdayApp
         private readonly MongoDBContext _mongoDBContext;
 
         private readonly PersonRepository _personRepository;
+
+        private readonly ErrorProvider errorProvider = new ErrorProvider();
 
         public MainForm(MongoDBContext mongoDBContext, PersonRepository personRepository)
         {
@@ -37,6 +42,20 @@ namespace BirthdayApp
 
         }
 
+        private void txtBoxFirstName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBoxFirstName.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtBoxFirstName, "Name is required.");
+            }
+            else
+            {
+                errorProvider.SetError(txtBoxFirstName, ""); // Clear the error if the field is not empty
+            }
+        }
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string firstName = txtBoxFirstName.Text;
@@ -55,6 +74,8 @@ namespace BirthdayApp
 
             try
             {
+                Calculate.ParseGreekDate(newPerson.Birthday);
+
                 _personRepository.Add(newPerson);
                 MessageBox.Show("Επιτυχής καταχώρηση!");
 
