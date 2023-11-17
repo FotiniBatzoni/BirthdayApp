@@ -42,60 +42,41 @@ namespace BirthdayApp
 
         }
 
-        private void txtBoxFirstName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBoxFirstName.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(txtBoxFirstName, "Name is required.");
-            }
-            else
-            {
-                errorProvider.SetError(txtBoxFirstName, ""); // Clear the error if the field is not empty
-            }
-        }
-
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string firstName = txtBoxFirstName.Text;
-            string lastName = txtBoxLastName.Text;
-            string birthday = bday.Text;
-            string sex = cmbBoxSex.Text;
-
-            Person newPerson = new Person
+           if(ValidationOf.TextBox(txtBoxFirstName.Text))
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Birthday = birthday,
-                Sex = sex
-            };
+                string firstName = txtBoxFirstName.Text;
+                string lastName = txtBoxLastName.Text;
+                string birthday = bday.Text;
+                string sex = cmbBoxSex.Text;
 
+                Person newPerson = new Person
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Birthday = birthday,
+                    Sex = sex
+                };
 
-            try
-            {
-                Calculate.ParseGreekDate(newPerson.Birthday);
+                try
+                {
+                    Calculate.ParseGreekDate(newPerson.Birthday);
 
-                _personRepository.Add(newPerson);
-                MessageBox.Show("Επιτυχής καταχώρηση!");
+                    _personRepository.Add(newPerson);
+                    MessageBox.Show("Επιτυχής καταχώρηση!");
 
-                // Optionally, update UI or clear input fields after successful addition
-                ClearInputFields();
+                    // Optionally, update UI or clear input fields after successful addition
+                    Utilities.Utilities.ClearInputFields(txtBoxFirstName, txtBoxLastName, bday, cmbBoxSex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Λάθος στην καταχώρηση: {ex.Message}");
+
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Λάθος στην καταχώρηση: {ex.Message}");
 
-            }
-        }
-
-        private void ClearInputFields()
-        {
-            // Clear input fields or update UI as needed
-            txtBoxFirstName.Text = "";
-            txtBoxLastName.Text = "";
-            bday.Text = "";
-            cmbBoxSex.Text = "";
         }
 
         private void PopulateComboBox()
