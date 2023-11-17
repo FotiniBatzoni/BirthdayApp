@@ -39,13 +39,14 @@ namespace BirthdayApp
 
             string columnName = ListDataGridView.Columns[e.ColumnIndex].DataPropertyName;
 
-            // Check if the column clicked is the 'Όνομα' column (assuming it's the first column)
             if (e.ColumnIndex == 0)
             {
                 // Sort the BindingList
                 var sortedList = isNameColumnSortedAscending ?
-                    new BindingList<PersonInfo>(bindingList.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList()) :
-                    new BindingList<PersonInfo>(bindingList.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList());
+                    new BindingList<PersonInfo>(bindingList
+                    .OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList()) :
+                    new BindingList<PersonInfo>(bindingList
+                    .OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList());
 
                 bindingList = sortedList;
 

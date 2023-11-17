@@ -61,7 +61,6 @@ namespace BirthdayApp
             txtBoxFirstName.Name = "txtBoxFirstName";
             txtBoxFirstName.Size = new Size(299, 23);
             txtBoxFirstName.TabIndex = 1;
-
             // 
             // lblLastName
             // 
@@ -140,6 +139,7 @@ namespace BirthdayApp
             btnListByMonth.TabIndex = 10;
             btnListByMonth.Text = "Γενέθλια του μήνα";
             btnListByMonth.UseVisualStyleBackColor = true;
+            btnListByMonth.Click += btnListByMonth_Click;
             // 
             // lblSex
             // 

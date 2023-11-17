@@ -12,7 +12,27 @@ namespace BirthdayApp.Utilities
         {
             CultureInfo greekCulture = new CultureInfo("el-GR");
             string dateFormat = "dddd, dd MMMM yyyy";
-            return DateTime.ParseExact(dateString, dateFormat, greekCulture);
+            string alternativeDateFormat = "dddd , dd MMMM yyyy";
+
+            DateTime parsedDate;
+            DateTime tryDateFormat, tryAlternativeFormat;
+
+            if (DateTime.TryParseExact(
+                dateString, dateFormat, greekCulture, DateTimeStyles.None, out tryDateFormat))
+            {
+                parsedDate = tryDateFormat;
+            }
+            else if (DateTime.TryParseExact(
+                dateString, alternativeDateFormat, greekCulture, DateTimeStyles.None, out tryAlternativeFormat))
+            {
+                parsedDate = tryAlternativeFormat;
+            }
+            else
+            {
+                parsedDate = DateTime.MinValue;
+            }
+
+            return parsedDate;
         }
 
         public static int Age(string birthday)
@@ -77,6 +97,13 @@ namespace BirthdayApp.Utilities
                 }
             }
             return DateTime.MinValue;
+        }
+
+        public static int MonthOfBirth(string birthdayString)
+        {
+            var parsed = ParsedDate(birthdayString);
+            return parsed.Month;
+
         }
     }
 }

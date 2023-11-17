@@ -1,6 +1,7 @@
 using BirthdayApp.Classes;
 using BirthdayApp.Interfaces;
 using BirthdayApp.Utilities;
+using System.ComponentModel;
 
 
 namespace BirthdayApp
@@ -12,6 +13,8 @@ namespace BirthdayApp
         private readonly PersonRepository _personRepository;
 
         private readonly ErrorProvider errorProvider = new ErrorProvider();
+
+      
 
         public MainForm(MongoDBContext mongoDBContext, PersonRepository personRepository)
         {
@@ -43,7 +46,7 @@ namespace BirthdayApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           if(ValidationOf.TextBox(txtBoxFirstName.Text))
+            if (ValidationOf.TextBox(txtBoxFirstName.Text))
             {
                 var newPerson = Utilities.Utilities.CreateNewPerson(txtBoxFirstName, txtBoxLastName, bday, cmbBoxSex);
 
@@ -54,16 +57,14 @@ namespace BirthdayApp
                     _personRepository.Add(newPerson);
                     MessageBox.Show("Επιτυχής καταχώρηση!");
 
-                    // Optionally, update UI or clear input fields after successful addition
+                    //ClearInputFields
                     Utilities.Utilities.ClearInputFields(txtBoxFirstName, txtBoxLastName, bday, cmbBoxSex);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Λάθος στην καταχώρηση: {ex.Message}");
-
                 }
             }
-
         }
 
         private void PopulateComboBox()
@@ -85,6 +86,26 @@ namespace BirthdayApp
                 int selectedValue = selected.Value;
 
             }
+        }
+
+        private void btnListByMonth_Click(object sender, EventArgs e)
+        {
+            int currentMonth = DateTime.Today.Month;
+
+            var persons = _personRepository.GetAll();
+
+            var birthdaysThisMonth = persons.Where(person =>
+             Calculate.MonthOfBirth(person.Birthday) == currentMonth
+         ).ToList();
+
+            DataGridViewList dataGridViewListForm = new DataGridViewList();
+
+            // Populate the DataGridView in the form with the retrieved persons
+            dataGridViewListForm.PopulateDataGridView(birthdaysThisMonth);
+
+            // Show the form
+            dataGridViewListForm.Show();
+
         }
     }
 }
