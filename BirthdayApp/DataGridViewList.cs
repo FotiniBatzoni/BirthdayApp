@@ -16,7 +16,6 @@ namespace BirthdayApp
         public DataGridViewList()
         {
             InitializeComponent();
-
         }
 
         public void PopulateDataGridView(IEnumerable<Person> persons)
@@ -55,38 +54,18 @@ namespace BirthdayApp
             }
             else if (e.ColumnIndex == 1)
             {
-                var cultureInfo = new System.Globalization.CultureInfo("el-GR");
-                var dateTimeStyle = System.Globalization.DateTimeStyles.None;
 
                 var sortedList = isNameColumnSortedAscending ?
-         new BindingList<PersonInfo>(bindingList.OrderBy(x =>
-         {
-             // Extract the date part and convert it to DateTime for sorting
-             string birthdayString = x.GetType().GetProperty(columnName).GetValue(x, null)?.ToString();
-             if (!string.IsNullOrEmpty(birthdayString))
-             {
-                 // Parsing the string date into DateTime using the appropriate format
-                 DateTime parsedDate;
-                 if (DateTime.TryParseExact(birthdayString, "dddd, dd MMMM yyyy", cultureInfo, dateTimeStyle, out parsedDate))
-                 {
-                     return parsedDate;
-                 }
-             }
-             return DateTime.MinValue; // Or any default value if parsing fails
-         }).ToList()) :
-         new BindingList<PersonInfo>(bindingList.OrderByDescending(x =>
-         {
-             string birthdayString = x.GetType().GetProperty(columnName).GetValue(x, null)?.ToString();
-             if (!string.IsNullOrEmpty(birthdayString))
-             {
-                 DateTime parsedDate;
-                 if (DateTime.TryParseExact(birthdayString, "dddd, dd MMMM yyyy", cultureInfo, dateTimeStyle, out parsedDate))
-                 {
-                     return parsedDate;
-                 }
-             }
-             return DateTime.MinValue; // Or any default value if parsing fails
-         }).ToList());
+                new BindingList<PersonInfo>(bindingList.OrderBy(x =>
+                {
+                    string birthdayString = x.GetType().GetProperty(columnName).GetValue(x, null)?.ToString();
+                    return Calculate.ParsedDate(birthdayString);
+                }).ToList()) :
+                new BindingList<PersonInfo>(bindingList.OrderByDescending(x =>
+                {
+                    string birthdayString = x.GetType().GetProperty(columnName).GetValue(x, null)?.ToString();
+                    return Calculate.ParsedDate(birthdayString);
+                }).ToList());
 
                 bindingList = sortedList;
 

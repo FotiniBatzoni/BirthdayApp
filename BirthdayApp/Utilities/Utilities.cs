@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BirthdayApp.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,24 @@ namespace BirthdayApp.Utilities
             textBox2.Text = "";
             textBox3.Text = "";
             comboBox.Text = "";
+        }
+
+        public static Person CreateNewPerson(TextBox textBox1, TextBox textBox2, DateTimePicker textBox3, ComboBox comboBox)
+        {
+            string firstName = textBox1.Text;
+            string lastName = textBox2.Text;
+            string birthday = textBox3.Text;
+            string sex = comboBox.Text;
+
+            Person newPerson = new Person
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Birthday = birthday,
+                Sex = sex
+            };
+
+            return newPerson;
         }
     }
 }

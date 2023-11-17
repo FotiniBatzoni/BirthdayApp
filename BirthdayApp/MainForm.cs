@@ -1,9 +1,7 @@
 using BirthdayApp.Classes;
 using BirthdayApp.Interfaces;
 using BirthdayApp.Utilities;
-using System.Linq.Expressions;
-using System.Windows.Forms;
-using System.Xml.Linq;
+
 
 namespace BirthdayApp
 {
@@ -47,18 +45,7 @@ namespace BirthdayApp
         {
            if(ValidationOf.TextBox(txtBoxFirstName.Text))
             {
-                string firstName = txtBoxFirstName.Text;
-                string lastName = txtBoxLastName.Text;
-                string birthday = bday.Text;
-                string sex = cmbBoxSex.Text;
-
-                Person newPerson = new Person
-                {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Birthday = birthday,
-                    Sex = sex
-                };
+                var newPerson = Utilities.Utilities.CreateNewPerson(txtBoxFirstName, txtBoxLastName, bday, cmbBoxSex);
 
                 try
                 {

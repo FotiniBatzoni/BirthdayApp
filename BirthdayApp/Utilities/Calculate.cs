@@ -61,5 +61,22 @@ namespace BirthdayApp.Utilities
                 return -1;
             }
         }
+
+        public static DateTime ParsedDate(string birthdayString)
+        {
+            var cultureInfo = new CultureInfo("el-GR");
+            var dateTimeStyle = DateTimeStyles.None;
+
+            if (!string.IsNullOrEmpty(birthdayString))
+            {
+                // Parsing the string date into DateTime using the appropriate format
+                DateTime parsedDate;
+                if (DateTime.TryParseExact(birthdayString, "dddd, dd MMMM yyyy", cultureInfo, dateTimeStyle, out parsedDate))
+                {
+                    return parsedDate;
+                }
+            }
+            return DateTime.MinValue;
+        }
     }
 }
