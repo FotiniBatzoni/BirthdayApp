@@ -45,6 +45,7 @@ namespace BirthdayApp
             cmbBoxSex = new ComboBox();
             btnGroup = new Button();
             btnBirthdaysByGroups = new Button();
+            btnUpdate = new Button();
             SuspendLayout();
             // 
             // lblFirstName
@@ -172,7 +173,7 @@ namespace BirthdayApp
             // 
             // btnBirthdaysByGroups
             // 
-            btnBirthdaysByGroups.Location = new Point(786, 50);
+            btnBirthdaysByGroups.Location = new Point(786, 258);
             btnBirthdaysByGroups.Name = "btnBirthdaysByGroups";
             btnBirthdaysByGroups.Size = new Size(140, 44);
             btnBirthdaysByGroups.TabIndex = 14;
@@ -180,11 +181,22 @@ namespace BirthdayApp
             btnBirthdaysByGroups.UseVisualStyleBackColor = true;
             btnBirthdaysByGroups.Click += btnBirthdaysByGroups_Click;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(786, 50);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(140, 44);
+            btnUpdate.TabIndex = 15;
+            btnUpdate.Text = "Διόρθωση";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(981, 450);
+            Controls.Add(btnUpdate);
             Controls.Add(btnBirthdaysByGroups);
             Controls.Add(btnGroup);
             Controls.Add(cmbBoxSex);
@@ -224,5 +236,6 @@ namespace BirthdayApp
         private ComboBox cmbBoxSex;
         private Button btnGroup;
         private Button btnBirthdaysByGroups;
+        private Button btnUpdate;
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             ListDataGridView = new DataGridView();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)ListDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -37,21 +36,13 @@
             // 
             ListDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             ListDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ListDataGridView.Location = new Point(2, 2);
+            ListDataGridView.Location = new Point(1, 1);
             ListDataGridView.Name = "ListDataGridView";
+            ListDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             ListDataGridView.RowTemplate.Height = 25;
-            ListDataGridView.Size = new Size(770, 404);
+            ListDataGridView.Size = new Size(893, 437);
             ListDataGridView.TabIndex = 0;
             ListDataGridView.ColumnHeaderMouseClick += ListDataGridView_ColumnHeaderMouseClick;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(227, 121);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // DataGridViewList
             // 
@@ -60,9 +51,10 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(784, 450);
-            Controls.Add(button1);
+            ClientSize = new Size(924, 450);
             Controls.Add(ListDataGridView);
+            MinimizeBox = false;
+            Name = "DataGridViewList";
             Text = "DataGridViewList";
             ((System.ComponentModel.ISupportInitialize)ListDataGridView).EndInit();
             ResumeLayout(false);
@@ -71,10 +63,9 @@
         #endregion
 
         private DataGridView ListDataGridView;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewTextBoxColumn Birthday;
-        private DataGridViewTextBoxColumn Age;
-        private DataGridViewTextBoxColumn DaysForBirthday;
-        private Button button1;
+        private DataGridViewTextBoxColumn NameL;
+        private DataGridViewTextBoxColumn BirthdayL;
+        private DataGridViewTextBoxColumn AgeL;
+        private DataGridViewTextBoxColumn DaysForBirthdayL;
     }
 }

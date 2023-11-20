@@ -1,4 +1,5 @@
 ﻿using BirthdayApp.Classes;
+using BirthdayApp.Interfaces;
 using BirthdayApp.Repository;
 using BirthdayApp.Utilities;
 using System.ComponentModel;
@@ -23,7 +24,8 @@ namespace BirthdayApp
 
         public void PopulateDataGridView(IEnumerable<Person> persons)
         {
-            var transformedData = persons.Select(p => {
+            var transformedData = persons.Select(p =>
+            {
                 var group = _groupRepository.GetById(p.PersonsGroup);
                 return new PersonInfo
                 {
@@ -31,7 +33,7 @@ namespace BirthdayApp
                     Γενέθλια = p.Birthday,
                     Ηλικία = Calculate.Age(p.Birthday),
                     Ημέρες_για_τα_γενέθλια = Calculate.DaysUntilBirthday(p.Birthday),
-                    Γκρουπ = group != null ? group.Name : "Unknown" 
+                    Γκρουπ = group != null ? group.Name : "Unknown"
                 };
             }).ToList();
 
@@ -81,6 +83,7 @@ namespace BirthdayApp
                 ListDataGridView.DataSource = bindingList;
             }
         }
+
 
     }
 }

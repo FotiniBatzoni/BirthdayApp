@@ -14,7 +14,7 @@ namespace BirthdayApp
 
         public MainForm(
             MongoDBContext mongoDBContext,
-            PersonRepository personRepository, 
+            PersonRepository personRepository,
             GroupRepository groupRepository)
         {
             InitializeComponent();
@@ -133,7 +133,7 @@ namespace BirthdayApp
             GroupForm groupForm = new GroupForm();
 
             if (groupForm.ShowDialog() == DialogResult.OK)
-            { 
+            {
                 string groupName = groupForm.GroupName;
 
                 Group newGroup = new Group();
@@ -180,6 +180,20 @@ namespace BirthdayApp
 
             dataGridViewListForm.Show();
 
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var persons = _personRepository.GetAll();
+
+            // Create an instance of the DataGridViewList form
+            DataGridViewUpdate dataGridViewUpdateForm = new DataGridViewUpdate(_groupRepository);
+
+            // Populate the DataGridView in the form with the retrieved persons
+            dataGridViewUpdateForm.PopulateDataGridView(persons);
+
+            // Show the form
+            dataGridViewUpdateForm.Show();
         }
     }
 }
