@@ -12,5 +12,6 @@ namespace BirthdayApp.Classes
         public string Γενέθλια { get; set; }
         public int Ηλικία { get; set; }
         public int Ημέρες_για_τα_γενέθλια { get; set; }
+        public string Γκρουπ { get; set; }
     }
 }

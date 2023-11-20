@@ -26,6 +26,11 @@ namespace BirthdayApp.Repository
             return _dbContext.GetCollection<Group>("Groups").Find(c => c.Id == objectId).FirstOrDefault();
         }
 
+        public Group GetByName(string name)
+        {
+            return _dbContext.GetCollection<Group>("Groups").Find(c => c.Name == name).FirstOrDefault();
+        }
+
         public void Add(Group entity)
         {
             _dbContext.GetCollection<Group>("Groups").InsertOne(entity);

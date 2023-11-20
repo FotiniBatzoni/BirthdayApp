@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             ListDataGridView = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)ListDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -43,6 +44,15 @@
             ListDataGridView.TabIndex = 0;
             ListDataGridView.ColumnHeaderMouseClick += ListDataGridView_ColumnHeaderMouseClick;
             // 
+            // button1
+            // 
+            button1.Location = new Point(227, 121);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // DataGridViewList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -51,6 +61,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(784, 450);
+            Controls.Add(button1);
             Controls.Add(ListDataGridView);
             Text = "DataGridViewList";
             ((System.ComponentModel.ISupportInitialize)ListDataGridView).EndInit();
@@ -64,5 +75,6 @@
         private DataGridViewTextBoxColumn Birthday;
         private DataGridViewTextBoxColumn Age;
         private DataGridViewTextBoxColumn DaysForBirthday;
+        private Button button1;
     }
 }

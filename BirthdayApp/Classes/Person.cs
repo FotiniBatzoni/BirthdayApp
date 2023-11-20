@@ -15,6 +15,6 @@ namespace BirthdayApp.Classes
         public string Birthday { get; set; }
         public string Sex { get; set; }
 
-        public Group PersonsGroup { get; set; }
+        public string PersonsGroup { get; set; }
     }
 }

@@ -44,6 +44,7 @@ namespace BirthdayApp
             lblSex = new Label();
             cmbBoxSex = new ComboBox();
             btnGroup = new Button();
+            btnBirthdaysByGroups = new Button();
             SuspendLayout();
             // 
             // lblFirstName
@@ -161,18 +162,30 @@ namespace BirthdayApp
             // 
             // btnGroup
             // 
-            btnGroup.Location = new Point(786, 50);
+            btnGroup.Location = new Point(537, 258);
             btnGroup.Name = "btnGroup";
             btnGroup.Size = new Size(140, 44);
             btnGroup.TabIndex = 13;
             btnGroup.Text = "Πρόσθεσε Γκρουπ";
             btnGroup.UseVisualStyleBackColor = true;
+            btnGroup.Click += btnGroup_Click;
+            // 
+            // btnBirthdaysByGroups
+            // 
+            btnBirthdaysByGroups.Location = new Point(786, 50);
+            btnBirthdaysByGroups.Name = "btnBirthdaysByGroups";
+            btnBirthdaysByGroups.Size = new Size(140, 44);
+            btnBirthdaysByGroups.TabIndex = 14;
+            btnBirthdaysByGroups.Text = "Γενέθλια ανα Γκρουπ";
+            btnBirthdaysByGroups.UseVisualStyleBackColor = true;
+            btnBirthdaysByGroups.Click += btnBirthdaysByGroups_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(981, 450);
+            Controls.Add(btnBirthdaysByGroups);
             Controls.Add(btnGroup);
             Controls.Add(cmbBoxSex);
             Controls.Add(lblSex);
@@ -189,6 +202,7 @@ namespace BirthdayApp
             Controls.Add(lblFirstName);
             Name = "MainForm";
             Text = "MainForm";
+            Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,5 +223,6 @@ namespace BirthdayApp
         private Label lblSex;
         private ComboBox cmbBoxSex;
         private Button btnGroup;
+        private Button btnBirthdaysByGroups;
     }
 }
